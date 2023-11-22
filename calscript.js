@@ -1,55 +1,40 @@
-const num1 = document.querySelector("#num1");
-const num2 = document.querySelector("#num2");
-const soma = document.querySelector("#soma");
-const subtrai = document.querySelector("#subtrai");
-const multiplica = document.querySelector("#multiplica");
-const divide = document.querySelector("#divide");
-const raiz = document.querySelector("#raiz");
-const exp = document.querySelector("#exp");
-const ce = document.querySelector("#ce");
-const trocar = document.querySelector("#trocar");
-const resultado = document.querySelector("#resultado");
+function calculate() {
+    // Obter os valores dos inputs e do operador
+    var num1 = parseFloat(document.getElementById('input1').value);
+    var num2 = parseFloat(document.getElementById('input2').value);
+    var operator = document.getElementById('operator').value;
 
-soma.addEventListener("click", () => {
-  const valor1 = parseFloat(num1.value);
-  const valor2 = parseFloat(num2.value);
-  resultado.textContent = valor1 + valor2;
-});
+    // Verificar se os inputs são válidos
+    if (isNaN(num1) || isNaN(num2)) {
+        alert('Por favor, insira números válidos.');
+        return;
+    }
 
-subtrai.addEventListener("click", () => {
-  const valor1 = parseFloat(num1.value);
-  const valor2 = parseFloat(num2.value);
-  resultado.textContent = valor1 - valor2;
-});
+    // Realizar a operação com base no operador selecionado
+    var result;
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 !== 0) {
+                result = num1 / num2;
+            } else {
+                alert('Não é possível dividir por zero.');
+                return;
+            }
+            break;
+        default:
+            alert('Operador inválido.');
+            return;
+    }
 
-multiplica.addEventListener("click", () => {
-  const valor1 = parseFloat(num1.value);
-  const valor2 = parseFloat(num2.value);
-  resultado.textContent = valor1 * valor2;
-});
-
-divide.addEventListener("click", () => {
-  const valor1 = parseFloat(num1.value);
-  const valor2 = parseFloat(num2.value);
-  resultado.textContent = valor1 / valor2;
-});
-
-raiz.addEventListener("click", () => {
-  const valor1 = parseFloat(num1.value);
-  resultado.textContent = Math.sqrt(valor1);
-});
-
-exp.addEventListener("click", () => {
-  const valor1 = parseFloat(num1.value);
-  resultado.textContent = Math.pow(valor1, valor2);
-});
-
-ce.addEventListener("click", () => {
-  resultado.textContent = "";
-});
-
-trocar.addEventListener("click", () => {
-  const temp = num1.value;
-  num1.value = num2.value;
-  num2.value = temp;
-});
+    // Exibir o resultado
+    document.getElementById('result').innerText = 'Resultado: ' + result;
+}
