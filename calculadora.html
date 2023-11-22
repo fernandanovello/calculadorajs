@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,49 +7,46 @@
     <title>Calculadora</title>
 
     <style>
-.container {
-  width: 300px;
-  margin: 0 auto;
-  padding: 10px;
+        body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #D358F7;
 }
 
-input {
-  width: 100px;
-  height: 30px;
-  border: 1px solid black;
+.calculator {
+    text-align: center;
+}
+
+input, select, button {
+    margin: 10px;
+    padding: 5px;
+    font-size: 16px;
 }
 
 button {
-  width: 50px;
-  height: 30px;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+    cursor: pointer;
 }
 
-#resultado {
-  width: 100px;
-  height: 30px;
-  border: 1px solid black;
-  text-align: center;
-}
     </style>
 </head>
 <body>
-    <div class="container">
-        <input type="number" id="num1">
-        <input type="number" id="num2">
-        <button id="soma">+</button>
-        <button id="subtrai">-</button>
-        <button id="multiplica">*</button>
-        <button id="divide">/</button>
-        <button id="raiz">√</button>
-        <button id="exp">^</button>
-        <button id="ce">CE</button>
-        <button id="trocar">↔</button>
-        <div id="resultado"></div>
-      </div>
-  </div>
+
+    <div class="calculator">
+        <input type="text" id="input1" placeholder="Digite o primeiro número">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" id="input2" placeholder="Digite o segundo número">
+        <button onclick="calculate()">Calcular</button>
+        <p id="result">Resultado: </p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
